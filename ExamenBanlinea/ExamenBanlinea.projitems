@@ -9,15 +9,34 @@
     <Import_RootNamespace>ExamenBanlinea</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ExamenBanlineaPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ContactsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\NewContact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExamenBanlineaPage.xaml.cs">
-      <DependentUpon>ExamenBanlineaPage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ContactsList.xaml.cs">
+      <DependentUpon>ContactsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\NewContact.xaml.cs">
+      <DependentUpon>NewContact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\ContactsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMContactsList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\DTOs\" />
   </ItemGroup>
 </Project>

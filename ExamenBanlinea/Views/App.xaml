@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ExamenBanlinea.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <!--<Setter Property="TextColor" Value="Blue" />-->
+            </Style>
+            <Color x:Key="ligthgray">#e5e5e5</Color>
+            <Style x:Key="LabelNombre" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor"        Value="#3678B1" />
+                <Setter Property="FontAttributes"   Value="Bold" />
+                <Setter Property="FontSize"         Value="14"/>
+            </Style>
+            <Style x:Key="LabelNumero" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor"        Value="#3678B1" />
+                <Setter Property="FontSize"         Value="10"/>
+            </Style>
+            <Style x:Key="BotonAzul" TargetType="Button">
+                <Setter Property="TextColor"        Value="White"/>
+                <Setter Property="BackgroundColor"  Value="#3678B1"/>
+                <Setter Property="BorderWidth" Value="1"/>            
+                <Setter Property="BorderRadius" Value="0"/>
+            </Style>
+            <Style x:Key="BotonAzulBlanco" TargetType="Button">
+                <Setter Property="TextColor"        Value="#3678B1"/>
+                <Setter Property="BackgroundColor"  Value="White"/>
+                <Setter Property="BorderColor" Value="#3678B1"/>
+                <Setter Property="BorderWidth" Value="1"/>            
+                <Setter Property="BorderRadius" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
