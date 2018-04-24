@@ -1,5 +1,106 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ExamenBanlinea.NewContact">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:ExamenBanlinea;"
+    xmlns:helpers="clr-namespace:ExamenBanlinea.Helpers.Behaviors;"             
+    xmlns:controls="clr-namespace:ExamenBanlinea.Views.Controls;"
+    x:Class="ExamenBanlinea.NewContact"
+    Title="Nuevo Contacto">
     <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout>
+                
+            <Grid Padding="10" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="14"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="14"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="14"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="14"/>
+                    <RowDefinition Height="Auto"/>
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Style="{StaticResource LabelNumero}" Text="Compañia"/>
+                <Entry Grid.Row="1" Style="{StaticResource EntryStyle}" Grid.ColumnSpan="2" Text="{Binding contact.Company, Mode=TwoWay}" Placeholder="Compañia" Keyboard="Text"/>
+                
+                <Label Grid.Row="2" Style="{StaticResource LabelNumero}" Text="Email"/>
+                <StackLayout Padding="0" Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                    <Button WidthRequest="20" HeightRequest="20" Command="{Binding AddEmailCommand}" Image="plus_sign.png" />
+                    <Button WidthRequest="20" HeightRequest="20" Command="{Binding DelEmailCommand}" Image="minus_sign.png" />
+                </StackLayout>                
+                <local:Repeater Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding contact.Emails, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                    <local:Repeater.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Entry Text="{Binding EmailAddr, Mode=TwoWay}" Placeholder="Email" Keyboard="Email">
+                                    <Entry.Behaviors>
+                                        <helpers:EmailValidationBehavior IsValid="{Binding IsValid, Mode=TwoWay}"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </ViewCell>
+                        </DataTemplate>
+                    </local:Repeater.ItemTemplate>
+                </local:Repeater>
+
+                <Label Grid.Row="4" Style="{StaticResource LabelNumero}" Text="Nombre"/>
+                <Entry Grid.Row="5" Grid.ColumnSpan="2" Text="{Binding contact.Name, Mode=TwoWay}" Placeholder="Nombre" Keyboard="Text"/>
+
+                <Label Grid.Row="6" Style="{StaticResource LabelNumero}" Text="Apellido"/>
+                <Entry Grid.Row="7" Grid.ColumnSpan="2" Text="{Binding contact.LastName, Mode=TwoWay}" Placeholder="Apellido" Keyboard="Text"/>
+
+                <Label Grid.Row="8" Style="{StaticResource LabelNumero}" Text="Numero telefonico"/>
+                <StackLayout Grid.Row="8" Padding="0" Grid.Column="1" Orientation="Horizontal">
+                    <Button WidthRequest="20" HeightRequest="20" Command="{Binding AddNumberCommand}" Image="plus_sign.png" />
+                    <Button WidthRequest="20" HeightRequest="20" Command="{Binding DelNumberCommand}" Image="minus_sign.png" />
+                </StackLayout>                
+                <local:Repeater Grid.Row="9" Grid.ColumnSpan="2" ItemsSource="{Binding contact.PhoneNumbers, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                    <local:Repeater.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <controls:CountrySelector Item="{Binding ., Mode=TwoWay}" Lst="{Binding lstCountries}"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </local:Repeater.ItemTemplate>
+                </local:Repeater>
+
+                <Label Grid.Row="10" Style="{StaticResource LabelNumero}" Text="Foto"/>
+                <Grid ColumnSpacing="0" RowSpacing="0" Grid.Row="11" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>        
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>        
+                        <RowDefinition Height="40"/>        
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="100" Aspect="AspectFit" Source="{Binding sourceuserpic}"/>
+                    <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding CameraCommand}" Style="{StaticResource BotonAzulBlanco}" Text="Camara"/>
+                    <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding GalleryCommand}" Style="{StaticResource BotonAzulBlanco}" Text="Galeria"/>
+                </Grid>
+            </Grid>
+
+            <Grid ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="Cancelar" Command="{Binding CancelCommand}" Style="{StaticResource BotonAzulBlanco}"/>
+                <Button Grid.Column="1" Text="Guardar" Command="{Binding SaveContactCommand}" Style="{StaticResource BotonAzul}"/>
+            </Grid>
+
+        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

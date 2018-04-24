@@ -2,21 +2,37 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ExamenBanlinea.App">
     <Application.Resources>
         <ResourceDictionary>
+            <OnPlatform x:Key="MaxiSize" x:TypeArguments="x:Double">
+                <OnPlatform.iOS>14</OnPlatform.iOS>
+                <OnPlatform.Android>12</OnPlatform.Android>
+            </OnPlatform>
+            <OnPlatform x:Key="MiniSize" x:TypeArguments="x:Double">
+                <OnPlatform.iOS>10</OnPlatform.iOS>
+                <OnPlatform.Android>8</OnPlatform.Android>
+            </OnPlatform>
+            <OnPlatform x:Key="EntrySize" x:TypeArguments="x:Double">
+                <OnPlatform.iOS>30</OnPlatform.iOS>
+                <OnPlatform.Android>40</OnPlatform.Android>
+            </OnPlatform>
+            
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="Medium" />
                 <!--<Setter Property="TextColor" Value="Blue" />-->
             </Style>
             <Color x:Key="ligthgray">#e5e5e5</Color>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="{DynamicResource EntrySize}"/>
+            </Style>
             <Style x:Key="LabelNombre" TargetType="Label">
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="TextColor"        Value="#3678B1" />
                 <Setter Property="FontAttributes"   Value="Bold" />
-                <Setter Property="FontSize"         Value="14"/>
+                <Setter Property="FontSize"         Value="{DynamicResource MaxiSize}"/>
             </Style>
             <Style x:Key="LabelNumero" TargetType="Label">
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="TextColor"        Value="#3678B1" />
-                <Setter Property="FontSize"         Value="10"/>
+                <Setter Property="FontSize"         Value="{DynamicResource MiniSize}"/>
             </Style>
             <Style x:Key="BotonAzul" TargetType="Button">
                 <Setter Property="TextColor"        Value="White"/>

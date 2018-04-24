@@ -18,6 +18,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Controls\CountrySelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
@@ -32,11 +36,29 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\ContactsRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMContactsList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Converters\PhotoConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\Repeater.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMNewContact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Behaviors\behaviors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Service.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\Countries.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\CountrySelector.xaml.cs">
+      <DependentUpon>CountrySelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Interfaces\IGeo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\DTOs\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\Converters\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\Behaviors\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\Interfaces\" />
   </ItemGroup>
 </Project>

@@ -7,11 +7,11 @@ using System.ComponentModel;
 
 namespace ExamenBanlinea.ViewModels
 {
-    public class VMBase : BaseViewModel, INotifyPropertyChanged
+    public class VMBase : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public IUserDialogs Diag;
+        public INavigation Nav;
+
         private string mmsgbusy;
         public string MsgBusy
         {
@@ -38,7 +38,7 @@ namespace ExamenBanlinea.ViewModels
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            Diag.ShowLoading($"Estamos trabajando.{Environment.NewLine}Permítenos procesar tu información.{Environment.NewLine}{MsgBusy}", MaskType.Black);
+                            Diag.ShowLoading(MsgBusy, MaskType.Black);
                             //Task.Delay(TimeSpan.FromMilliseconds(10000));
                         });
                     }
@@ -55,9 +55,10 @@ namespace ExamenBanlinea.ViewModels
             }
         }
 
-        public VMBase(IUserDialogs diag)
+        public VMBase(IUserDialogs diag, INavigation nav)
         {
             Diag = diag;
+            Nav = nav;
         }
 
     }

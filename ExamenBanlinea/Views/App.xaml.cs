@@ -8,7 +8,7 @@ namespace ExamenBanlinea
         {
             InitializeComponent();
 
-            MainPage = new ContactsList();
+            MainPage = new NavigationPage(new ContactsList());
         }
 
         protected override void OnStart()

@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using PropertyChanged;
+using Newtonsoft.Json;
 
 namespace ExamenBanlinea.Models.DTOs
 {
@@ -13,15 +17,30 @@ namespace ExamenBanlinea.Models.DTOs
     {
         public Country Country { get; set; }
         public string Number { get; set; }
+        [JsonIgnore]
+        public bool IsValid { get; set; }
+        [JsonIgnore]
+        public ObservableCollection<Countries> lstCountries { get; set; }
     }
 
-    public class Contact
+    public class Email
     {
+        public string EmailAddr { get; set; }
+        [JsonIgnore]
+        public bool IsValid { get; set; }
+    }
+
+    public class Contact : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string Company { get; set; }
-        public IList<string> EmailsAddress { get; set; }
+        [JsonIgnore]
+        public ObservableCollection<Email> Emails { get; set; }
+        public List<string> EmailsAddress { get; set; }
         public string LastName { get; set; }
         public string Name { get; set; }
-        public IList<PhoneNumber> PhoneNumbers { get; set; }
+        public ObservableCollection<PhoneNumber> PhoneNumbers { get; set; }
         public string Photo { get; set; }
     }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using ExamenBanlinea.ViewModels;
 using Xamarin.Forms;
 
 namespace ExamenBanlinea
@@ -10,6 +10,12 @@ namespace ExamenBanlinea
         public NewContact()
         {
             InitializeComponent();
+
+            VMNewContact vm = new VMNewContact(Acr.UserDialogs.UserDialogs.Instance, Navigation);
+            BindingContext = vm;
+
+
         }
+
     }
 }
